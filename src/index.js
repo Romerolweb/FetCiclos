@@ -8,8 +8,10 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const MySQLStore = require('express-mysql-session');
 const { database } = require('./keys');
+
 //start
 const app = express();
+require('./lib/auth');
 
 //configurations
 app.set('port', process.env.PORT || 4000);
@@ -52,7 +54,7 @@ app.use((req, res, next) => {
 
 //routes
 app.use(require('./routes'));
-app.use(require('./routes/authentication'));
+app.use(require('./routes/auth'));
 app.use('/user', require('./routes/user'));
 app.use('/rol', require('./routes/rol'));
 app.use('/cycle', require('./routes/cycle'));
