@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - FetCiclos</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  
+  <main class="container">
+    <h1><%= title %></h1>
+    
+    <div class="cycles-list">
+      <% if (cycles && cycles.length > 0) { %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Duración</th>
+              <th>Fecha de Inicio</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% cycles.forEach(cycle => { %>
+              <tr>
+                <td><%= cycle.id %></td>
+                <td><%= cycle.name %></td>
+                <td><%= cycle.description %></td>
+                <td><%= cycle.duration %></td>
+                <td><%= cycle.start_date ? new Date(cycle.start_date).toLocaleDateString() : 'N/A' %></td>
+                <td>
+                  <a href="/cycles/<%= cycle.id %>" class="btn btn-info">Ver</a>
+                  <a href="/cycles/<%= cycle.id %>/edit" class="btn btn-warning">Editar</a>
+                  <form action="/cycles/<%= cycle.id %>?_method=DELETE" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro?')">Eliminar</button>
+                  </form>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      <% } else { %>
+        <p>No hay ciclos disponibles. <a href="/cycles/create">Crear uno nuevo</a></p>
+      <% } %>
+    </div>
+    
+    <div class="actions">
+      <a href="/cycles/create" class="btn btn-primary">Crear Nuevo Ciclo</a>
+    </div>
+  </main>
+  
+  <%- include('../partials/footer') %>
+</body>
+</html>

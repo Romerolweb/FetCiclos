@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - FetCiclos</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('../partials/header') %>
+  
+  <main class="container">
+    <h1><%= title %></h1>
+    
+    <div class="cycle-detail">
+      <div class="detail-group">
+        <strong>ID:</strong>
+        <span><%= cycle.id %></span>
+      </div>
+      
+      <div class="detail-group">
+        <strong>Nombre:</strong>
+        <span><%= cycle.name %></span>
+      </div>
+      
+      <div class="detail-group">
+        <strong>Descripción:</strong>
+        <p><%= cycle.description %></p>
+      </div>
+      
+      <div class="detail-group">
+        <strong>Duración:</strong>
+        <span><%= cycle.duration %> semanas</span>
+      </div>
+      
+      <div class="detail-group">
+        <strong>Fecha de Inicio:</strong>
+        <span><%= cycle.start_date ? new Date(cycle.start_date).toLocaleDateString() : 'N/A' %></span>
+      </div>
+      
+      <div class="detail-group">
+        <strong>Fecha de Creación:</strong>
+        <span><%= cycle.created_at ? new Date(cycle.created_at).toLocaleDateString() : 'N/A' %></span>
+      </div>
+    </div>
+    
+    <div class="actions">
+      <a href="/cycles/<%= cycle.id %>/edit" class="btn btn-primary">Editar</a>
+      <form action="/cycles/<%= cycle.id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de eliminar este ciclo?')">Eliminar</button>
+      </form>
+      <a href="/cycles" class="btn btn-secondary">Volver a la lista</a>
+    </div>
+  </main>
+  
+  <%- include('../partials/footer') %>
+</body>
+</html>
