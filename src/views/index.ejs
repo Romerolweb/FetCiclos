@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %> - FetCiclos</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+  
+  <main class="container">
+    <section class="hero">
+      <h1>Bienvenido a FetCiclos</h1>
+      <p>Sistema de Gestión de Ciclos Propedéuticos</p>
+      <div class="hero-buttons">
+        <a href="/cycles" class="btn btn-primary">Ver Ciclos</a>
+        <a href="/cycles/create" class="btn btn-secondary">Crear Ciclo</a>
+      </div>
+    </section>
+    
+    <section class="features">
+      <div class="feature-card">
+        <h3>Gestión de Ciclos</h3>
+        <p>Administra todos los ciclos propedéuticos de forma eficiente</p>
+      </div>
+      <div class="feature-card">
+        <h3>Seguimiento</h3>
+        <p>Realiza seguimiento del progreso de cada ciclo</p>
+      </div>
+      <div class="feature-card">
+        <h3>Reportes</h3>
+        <p>Genera reportes detallados de los ciclos</p>
+      </div>
+    </section>
+  </main>
+  
+  <%- include('partials/footer') %>
+</body>
+</html>
